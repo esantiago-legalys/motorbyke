@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_motorbike_form" model="ir.ui.view">
+        <field name="name">motorbike.form</field>
+        <field name="model">motorbike.registration</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="brand"/>
+                        <field name="name" placeholder="Model"/>
+                        <field name="year"/>
+                        <field name="vin"/>
+                        <field name="owner_id" context="{'default_is_motorbike': True}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_motorbike_tree" model="ir.ui.view">
+        <field name="name">motorbike.tree</field>
+        <field name="model">motorbike.registration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="brand"/>
+                <field name="name"/>
+                <field name="year"/>
+                <field name="vin"/>
+                <field name="owner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Definición de la acción -->
+    <record id="action_motorbike_registration" model="ir.actions.act_window">
+        <field name="name">Motorbike Registrations</field>
+        <field name="res_model">motorbike.registration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Definición del menú -->
+    <menuitem id="menu_motorbike_root" name="Motorbikes" sequence="10"/>
+    <menuitem id="menu_motorbike_registration" name="Registrations" parent="menu_motorbike_root" action="action_motorbike_registration"/>
+</odoo>
